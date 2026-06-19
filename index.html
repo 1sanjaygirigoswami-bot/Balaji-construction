@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balaji Construction | Trust and Quality</title>
+  <style>
+    :root {
+      --navy: #0f2747;
+      --navy-deep: #0a1a31;
+      --slate: #4a5b72;
+      --slate-light: #e8edf3;
+      --earth: #9b8157;
+      --text-dark: #1b2430;
+      --white: #ffffff;
+      --bg: #f5f7fb;
+      --success: #17603a;
+      --danger: #b42318;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(10, 26, 49, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-dark);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .header-main {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 6px 18px rgba(10, 26, 49, 0.2);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .main-nav a {
+      opacity: 0.95;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      opacity: 1;
+      color: #dbe7ff;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #102a4d 0%, #223e66 55%, #4a5b72 100%);
+      color: var(--white);
+      padding: 88px 0;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+    }
+
+    .hero-tag {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #d2def4;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero-section p {
+      color: #e8edf5;
+      max-width: 640px;
+      margin-bottom: 28px;
+      font-size: 1.03rem;
+    }
+
+    .quote-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--earth);
+      color: var(--white);
+      font-weight: 600;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 24px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .quote-btn:hover,
+    .quote-btn:focus-visible {
+      background: #806948;
+      transform: translateY(-2px);
+    }
+
+    .section-block {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+      max-width: 680px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.25;
+      color: var(--navy-deep);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: #4f5f74;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-media {
+      background: var(--slate-light);
+      overflow: hidden;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    .project-content h3 {
+      font-size: 1.06rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .project-content p {
+      color: #4c5a6d;
+      font-size: 0.95rem;
+    }
+
+    .contact-section {
+      background: #f1f5fa;
+      border-top: 1px solid #dde5f0;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-card,
+    .form-card {
+      background: var(--white);
+      border: 1px solid #dce4ef;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .contact-card h3,
+    .form-card h3 {
+      color: var(--navy);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #3f4e61;
+      margin-bottom: 18px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: #1f8b4c;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .whatsapp-btn:hover,
+    .whatsapp-btn:focus-visible {
+      background: #176c3b;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field-group label {
+      font-size: 0.92rem;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      border: 1px solid #c9d4e3;
+      border-radius: 10px;
+      padding: 11px 12px;
+      font: inherit;
+      color: var(--text-dark);
+      background: #fcfdff;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline: 2px solid #aac0e4;
+      border-color: #8ca6d3;
+    }
+
+    .field-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .send-btn {
+      width: fit-content;
+      padding: 11px 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .send-btn:hover,
+    .send-btn:focus-visible {
+      background: var(--navy-deep);
+    }
+
+    .botcheck-field {
+      display: none;
+    }
+
+    .site-footer {
+      background: var(--navy-deep);
+      color: #d9e4f7;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 980px) {
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .main-nav {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .hero-section {
+        padding: 64px 0;
+      }
+
+      .section-block {
+        padding: 56px 0;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header-main">
+    <div class="container top-bar">
+      <div class="brand-name">Balaji Construction</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section" id="home">
+      <div class="container hero-inner">
+        <p class="hero-tag">Trusted Construction Partner</p>
+        <h1>Building Trust Through Quality Workmanship and Timely Delivery</h1>
+        <p>We deliver dependable residential and commercial construction services with strong planning, transparent execution, and long-term value for every project.</p>
+        <a class="quote-btn" href="#contact">Get a Quote</a>
+      </div>
+    </section>
+
+    <section class="section-block" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Projects and Portfolio</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-media">
+              <img src="front view.jpeg" alt="Project image placeholder 1">
+            </div>
+            <div class="project-content">
+              <h3>Build name...</h3>
+              <p>About build...</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <video src="video link" controls preload="metadata"></video>
+            </div>
+            <div class="project-content">
+              <h3>Build name...</h3>
+              <p>About build...</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="image link" alt="Project image placeholder 2">
+            </div>
+            <div class="project-content">
+              <h3>Build name...</h3>
+              <p>About build...</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <video src="video link" controls preload="metadata"></video>
+            </div>
+            <div class="project-content">
+              <h3>Build name...</h3>
+              <p>About build...</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="image link" alt="Project image placeholder 3">
+            </div>
+            <div class="project-content">
+              <h3>Build name...</h3>
+              <p>About build...</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block contact-section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact Me</h2>
+          <p>Use the form below to request a quote. Your details are submitted directly and delivered to our email.</p>
+        </div>
+
+        <div class="contact-wrap">
+          <aside class="contact-card">
+            <h3>Business Details</h3>
+            <ul class="contact-list">
+              <li><strong>Company:</strong> Balaji Construction</li>
+              <li><strong>Address:</strong> Your Office Address, Your City, Your State, India</li>
+              <li><strong>Phone:</strong> +91 7222991779</li>
+              <li><strong>Email:</strong> Email</li>
+            </ul>
+          </aside>
+
+          <section class="form-card" aria-label="Contact form">
+            <h3>Get in Touch</h3>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="07aa261f-edd3-4b03-93a5-a9d2038360d5">
+              <input type="hidden" name="subject" value="New Quote Request - Balaji Construction">
+              <input type="hidden" name="from_name" value="Balaji Construction Website">
+              <input type="hidden" name="redirect" value="thank-you.html">
+              <input class="botcheck-field" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+
+              <div class="field-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Sanjay Giri" required>
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="+91 7222991779" required>
+              </div>
+
+              <div class="field-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
+              </div>
+
+              <button class="send-btn" type="submit">Send Request</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">©️ <span id="year"></span> Balaji Construction. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+    const yearNode = document.getElementById('year');
+
+    yearNode.textContent = new Date().getFullYear();
+
+    scrollLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
